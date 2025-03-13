@@ -1,14 +1,28 @@
-import {ReactNode, useState } from "react"
-import HomePage from "./Pages/Home"
-
-export var PageSetter = (_: ReactNode) => {} 
-
 function App() {
-    const [currentPage, setCurrentPage] = useState<ReactNode>(<HomePage/>)
+    const params = new URLSearchParams(document.location.search);
 
-    PageSetter = setCurrentPage
+    console.log(params)
+    switch(params.get("type")) {
+        
+    }
 
-    return currentPage
+    const type = params.get("type")
+    if (type === null) {
+        return (
+        <div>incomplete query</div>
+        )
+    }
+
+    const elem = document.createElement(type)
+    params.forEach((v,k) => {
+        if (k !== "type") {
+            elem.setAttribute(k,v)
+        }
+    })
+
+    return (
+        <div style={{width:"100%", height:"100%"}} ref={ref => {ref?.appendChild(elem)}}/>
+    )
 }
 
 export default App
