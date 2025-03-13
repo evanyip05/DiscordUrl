@@ -9,7 +9,7 @@ function App() {
     const type = params.get("type")
     if (type === null) {
         return (
-        <div>incomplete query</div>
+            <div>incomplete query</div>
         )
     }
 
@@ -21,7 +21,7 @@ function App() {
     })
 
     return (
-        <div style={{width:"100%", height:"100%"}} ref={ref => {ref?.appendChild(elem)}}/>
+        <div style={{display:"flex", justifyContent:"center", width:"100%", height:"100%"}} ref={ref => {ref?.appendChild(elem)}}/>
     )
 }
 
